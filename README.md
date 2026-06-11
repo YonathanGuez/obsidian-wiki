@@ -20,7 +20,7 @@ This skill gives you three operations:
 
 | Operation  | What it does                                                              | Output                                     |
 | ---------- | ------------------------------------------------------------------------- | ------------------------------------------ |
-| **Ingest** | Collects a source into `raw/`, `clippings/` and compiles it into the wiki | New or updated wiki pages                  |
+| **Ingest** | Collects a source into `raw/`, `Clippings/` and compiles it into the wiki | New or updated wiki pages                  |
 | **Query**  | Searches the wiki and answers with citations                              | Grounded answers linking to markdown pages |
 | **Lint**   | Checks index integrity, links, and wiki health                            | Auto-fixes plus reported issues            |
 
@@ -49,7 +49,7 @@ See [examples/](examples/) for sample wiki pages, source files, and operation lo
 
 Before installing this skill, ensure you have the following:
 
-- **Web Clipper**: Install the [Obsidian Web Clipper](https://obsidian.md/clipper) to save articles directly to your `clippings/` folder
+- **Web Clipper**: Install the [Obsidian Web Clipper](https://obsidian.md/clipper) to save articles directly to your `Clippings/` folder
 - **Obsidian**: Download and install [Obsidian](https://obsidian.md) for free to manage your knowledge base
 - **Optional - MCP Obsidian**: For advanced integration, you can optionally install [MCP Obsidian](https://github.com/MarkusPfundstein/mcp-obsidian)
 
@@ -61,6 +61,14 @@ npx skills add YonathanGuez/obsidian-wiki
 
 Works with any tool that supports the [Agent Skills](https://agentskills.io) standard.
 
+### if any issue :
+
+The skill is installed as a directory (obsidian-wiki/SKILL.md), but Claude Code's /skills command expects .md files directly in ~/.claude/skills/ for fix it create a symlink.
+
+```
+ln -sf ~/.agents/skills/obsidian-wiki/SKILL.md ~/.claude/skills/obsidian-wiki.md
+```
+
 ## Quick Start
 
 ### 1. Ingest your first source
@@ -69,7 +77,7 @@ Give the skill a URL, a file, or pasted text:
 
 > "Ingest this article: https://example.com/attention-is-all-you-need"
 
-You can use [extension Clipper](https://obsidian.md/clipper) that will save the artical in `clippings/`,then compiles or updates the right knowledge pages in `wiki/`.
+You can use [extension Clipper](https://obsidian.md/clipper) that will save the artical in `Clippings/`,then compiles or updates the right knowledge pages in `wiki/`.
 
 or
 
@@ -93,7 +101,7 @@ The core idea from Karpathy: the LLM maintains the wiki while the human focuses 
 
 ```text
 your-project/
-├── clippings/      ← Immutable source material
+├── Clippings/      ← Immutable source material
 ├── raw/            ← Immutable source material
 │   └── topic/
 │       └── 2026-04-03-source-article.md

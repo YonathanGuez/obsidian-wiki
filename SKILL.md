@@ -5,7 +5,7 @@ description: "Use when building or maintaining a personal knowledge base in Obsi
 
 # Karpathy LLM Wiki
 
-Build and maintain a personal knowledge base using LLMs. You manage two directories: `raw/` (immutable source material),`clippings/` (immutable source material) and `wiki/` (compiled knowledge articles). Sources go into raw/, you compile them into wiki articles, and the wiki compounds over time.
+Build and maintain a personal knowledge base using LLMs. You manage two directories: `raw/` (immutable source material),`Clippings/` (immutable source material) and `wiki/` (compiled knowledge articles). Sources go into raw/, you compile them into wiki articles, and the wiki compounds over time.
 
 Core ideas from Karpathy:
 
@@ -18,7 +18,7 @@ Three layers, all under the user's project root:
 
 **raw/** — Immutable source material. You read, never modify. Organized by topic subdirectories (e.g., `raw/machine-learning/`).
 
-**clippings/** — Immutable source material captured from external tools (e.g., web clippers, read-it-later apps). You read, never modify. Can be flat or organized by topic subdirectories.
+**Clippings/** — Immutable source material captured from external tools (e.g., web clippers, read-it-later apps). You read, never modify. Can be flat or organized by topic subdirectories.
 
 **wiki/** — Compiled knowledge articles. You have full ownership. Organized by topic subdirectories, one level only: `wiki/<topic>/<article>.md`. Contains two special files:
 
@@ -31,10 +31,10 @@ Templates live in `references/` relative to this file. Read them when you need t
 
 ### Initialization
 
-Triggers only on the first Ingest. Check whether `raw/` `clippings/` and `wiki/` exist. Create only what is missing; never overwrite existing files:
+Triggers only on the first Ingest. Check whether `raw/` `Clippings/` and `wiki/` exist. Create only what is missing; never overwrite existing files:
 
 - `raw/` directory (with `.gitkeep`)
-- `clippings/` directory (with `.gitkeep`)
+- `Clippings/` directory (with `.gitkeep`)
 - `wiki/` directory (with `.gitkeep`)
 - `wiki/index.md` — heading `# Knowledge Base Index`, empty body
 - `wiki/log.md` — heading `# Wiki Log`, empty body
@@ -47,11 +47,11 @@ If Query or Lint cannot find the wiki structure, tell the user: "Run an ingest f
 
 Fetch a source into raw/, then compile it into wiki/. Always both steps, no exceptions.
 
-### Fetch (raw/)
+### Fetch (raw/ and Clippings/)
 
 1. Get the source content using whatever web or file tools your environment provides. If nothing can reach the source, ask the user to paste it directly.
 
-2. Pick a topic directory. Check existing `raw/` subdirectories first; reuse one if the topic is close enough. Create a new subdirectory only for genuinely distinct topics.
+2. Pick a topic directory. Check existing `raw/` and `Clippings/` subdirectories first; reuse one if the topic is close enough. Create a new subdirectory only for genuinely distinct topics.
 
 3. Save as `raw/<topic>/YYYY-MM-DD-descriptive-slug.md`.
    - Slug from source title, kebab-case, max 60 characters.
@@ -156,9 +156,9 @@ Fix these automatically:
   - Exactly one match → fix the path.
   - Zero or multiple matches → report to the user.
 
-**Raw references** — every link in a Raw or Clippings field must point to an existing `raw/` or `clippings/`:
+**Raw references** — every link in a Raw or Clippings field must point to an existing `raw/` or `Clippings/`:
 
-- Target does not exist → search both `raw/` and `clippings/` directories for a file with the same name elsewhere.
+- Target does not exist → search both `raw/` and `Clippings/` directories for a file with the same name elsewhere.
   - Exactly one match → fix the path.
   - Zero or multiple matches → report to the user.
 
