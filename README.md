@@ -138,6 +138,8 @@ Unofficial community implementation of the workflow from [Karpathy's LLM Wiki id
 
 See also: [lucasastorian/llmwiki](https://github.com/lucasastorian/llmwiki), [atomicmemory/llm-wiki-compiler](https://github.com/atomicmemory/llm-wiki-compiler).
 
+and thanks you [Astro-Han](https://github.com/Astro-Han/karpathy-llm-wiki) for give me the first way to do that .
+
 ## License
 
 [MIT](LICENSE)
