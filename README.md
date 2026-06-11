@@ -1,12 +1,10 @@
-# karpathy-llm-wiki
+# karpathy-llm-wiki-webclipper
 
-**A reusable skill for building Karpathy-style LLM wikis with Claude Code, Cursor, Codex, and other Agent Skills tools.**
+**A reusable skill for building Karpathy-style LLM wikis with Claude Code, Cursor, Codex, and other Agent Skills tools. Enhanced with web clipper integration for seamless content ingestion.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/Astro-Han/karpathy-llm-wiki?style=social)](https://github.com/Astro-Han/karpathy-llm-wiki)
-[![GitHub forks](https://img.shields.io/github/forks/Astro-Han/karpathy-llm-wiki?style=social)](https://github.com/Astro-Han/karpathy-llm-wiki)
 [![Agent Skills](https://img.shields.io/badge/Agent_Skills-compatible-blue)](https://agentskills.io)
-[![Install](https://img.shields.io/badge/Install-npx_add--skill-green)](https://github.com/Astro-Han/karpathy-llm-wiki#install)
+[![Install](https://img.shields.io/badge/Install-npx_add--skill-green)](https://github.com/YonathanGuez/karpathy-llm-wiki-webclipper#install)
 
 <p align="center">
   <img src="assets/karpathy-tweet.png" alt="Karpathy's tweet about LLM Wiki" width="560">
@@ -20,20 +18,20 @@ An **LLM wiki** is a knowledge system where the LLM maintains structured wiki pa
 
 This skill gives you three operations:
 
-| Operation | What it does | Output |
-|-----------|--------------|--------|
-| **Ingest** | Collects a source into `raw/` and compiles it into the wiki | New or updated wiki pages |
-| **Query** | Searches the wiki and answers with citations | Grounded answers linking to markdown pages |
-| **Lint** | Checks index integrity, links, and wiki health | Auto-fixes plus reported issues |
+| Operation  | What it does                                                              | Output                                     |
+| ---------- | ------------------------------------------------------------------------- | ------------------------------------------ |
+| **Ingest** | Collects a source into `raw/`, `clippings/` and compiles it into the wiki | New or updated wiki pages                  |
+| **Query**  | Searches the wiki and answers with citations                              | Grounded answers linking to markdown pages |
+| **Lint**   | Checks index integrity, links, and wiki health                            | Auto-fixes plus reported issues            |
 
 See [SKILL.md](SKILL.md) for the full skill specification.
 
 ## LLM Wiki vs RAG
 
-| Approach | Knowledge lives in | When synthesis happens | Good for |
-|----------|--------------------|------------------------|----------|
-| **RAG** | Raw chunks and embeddings | At query time | Broad retrieval across large corpora |
-| **LLM Wiki** | Curated markdown pages | During ingest and maintenance | Compounding knowledge, summaries, and durable cross-links |
+| Approach     | Knowledge lives in        | When synthesis happens        | Good for                                                  |
+| ------------ | ------------------------- | ----------------------------- | --------------------------------------------------------- |
+| **RAG**      | Raw chunks and embeddings | At query time                 | Broad retrieval across large corpora                      |
+| **LLM Wiki** | Curated markdown pages    | During ingest and maintenance | Compounding knowledge, summaries, and durable cross-links |
 
 This skill is optimized for the wiki model: knowledge that improves over time instead of re-deriving relationships on every query.
 
@@ -47,10 +45,18 @@ Based on a production knowledge base maintained daily since April 2026:
 
 See [examples/](examples/) for sample wiki pages, source files, and operation logs.
 
+## Prerequisites
+
+Before installing this skill, ensure you have the following:
+
+- **Web Clipper**: Install the [Obsidian Web Clipper](https://obsidian.md/clipper) to save articles directly to your `clippings/` folder
+- **Obsidian**: Download and install [Obsidian](https://obsidian.md) for free to manage your knowledge base
+- **Optional - MCP Obsidian**: For advanced integration, you can optionally install [MCP Obsidian](https://github.com/MarkusPfundstein/mcp-obsidian)
+
 ## Install
 
 ```bash
-npx add-skill Astro-Han/karpathy-llm-wiki
+npx add-skill YonathanGuez/karpathy-llm-wiki-webclipper
 ```
 
 Works with any tool that supports the [Agent Skills](https://agentskills.io) standard.
@@ -62,6 +68,10 @@ Works with any tool that supports the [Agent Skills](https://agentskills.io) sta
 Give the skill a URL, a file, or pasted text:
 
 > "Ingest this article: https://example.com/attention-is-all-you-need"
+
+You can use [extension Clipper](https://obsidian.md/clipper) that will save the artical in `clippings/`,then compiles or updates the right knowledge pages in `wiki/`.
+
+or
 
 The skill stores the source in `raw/`, then compiles or updates the right knowledge pages in `wiki/`.
 
@@ -83,6 +93,7 @@ The core idea from Karpathy: the LLM maintains the wiki while the human focuses 
 
 ```text
 your-project/
+├── clippings/      ← Immutable source material
 ├── raw/            ← Immutable source material
 │   └── topic/
 │       └── 2026-04-03-source-article.md
@@ -99,12 +110,12 @@ Each new source can update multiple pages, strengthen cross-references, and reco
 
 This skill follows the [agentskills.io](https://agentskills.io) open standard:
 
-| Tool | Install method |
-|------|----------------|
-| Claude Code | `npx add-skill Astro-Han/karpathy-llm-wiki` |
-| Cursor | `npx add-skill Astro-Han/karpathy-llm-wiki` |
-| Codex CLI | Copy to `.agents/skills/karpathy-llm-wiki/` |
-| OpenCode | `npx add-skill Astro-Han/karpathy-llm-wiki` |
+| Tool        | Install method                                                    |
+| ----------- | ----------------------------------------------------------------- |
+| Claude Code | `npx add-skill YonathanGuez/karpathy-llm-wiki-webclipper`         |
+| Cursor      | `npx add-skill YonathanGuez/karpathy-llm-wiki-webclipper`         |
+| Codex CLI   | Copy to `.agents/skills/karpathy-llm-wiki-webclipper/`            |
+| OpenCode    | `npx add-skill YonathanGuez/karpathy-llm-wiki-webclipper`         |
 | Other tools | Copy `SKILL.md` and `references/` into the tool's skill directory |
 
 ## FAQ

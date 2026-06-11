@@ -5,9 +5,10 @@ description: "Use when building or maintaining a personal LLM-powered knowledge 
 
 # Karpathy LLM Wiki
 
-Build and maintain a personal knowledge base using LLMs. You manage two directories: `raw/` (immutable source material) and `wiki/` (compiled knowledge articles). Sources go into raw/, you compile them into wiki articles, and the wiki compounds over time.
+Build and maintain a personal knowledge base using LLMs. You manage two directories: `raw/` (immutable source material),`clippings/` (immutable source material) and `wiki/` (compiled knowledge articles). Sources go into raw/, you compile them into wiki articles, and the wiki compounds over time.
 
 Core ideas from Karpathy:
+
 - "The LLM writes and maintains the wiki; the human reads and asks questions."
 - "The wiki is a persistent, compounding artifact."
 
@@ -17,7 +18,10 @@ Three layers, all under the user's project root:
 
 **raw/** — Immutable source material. You read, never modify. Organized by topic subdirectories (e.g., `raw/machine-learning/`).
 
+**clippings/** — Immutable source material captured from external tools (e.g., web clippers, read-it-later apps). You read, never modify. Can be flat or organized by topic subdirectories.
+
 **wiki/** — Compiled knowledge articles. You have full ownership. Organized by topic subdirectories, one level only: `wiki/<topic>/<article>.md`. Contains two special files:
+
 - `wiki/index.md` — Global index. One row per article, grouped by topic, with link + summary + Updated date.
 - `wiki/log.md` — Append-only operation log.
 
@@ -27,9 +31,10 @@ Templates live in `references/` relative to this file. Read them when you need t
 
 ### Initialization
 
-Triggers only on the first Ingest. Check whether `raw/` and `wiki/` exist. Create only what is missing; never overwrite existing files:
+Triggers only on the first Ingest. Check whether `raw/` `clippings/` and `wiki/` exist. Create only what is missing; never overwrite existing files:
 
 - `raw/` directory (with `.gitkeep`)
+- `clippings/` directory (with `.gitkeep`)
 - `wiki/` directory (with `.gitkeep`)
 - `wiki/index.md` — heading `# Knowledge Base Index`, empty body
 - `wiki/log.md` — heading `# Wiki Log`, empty body
@@ -68,6 +73,7 @@ Determine where the new content belongs:
 These are not mutually exclusive. A single source may warrant merging into one article while also creating a separate article for a distinct concept it introduces. In all cases, check for factual conflicts: if the new source contradicts existing content, annotate the disagreement with source attribution. When merging, note the conflict within the merged article. When the conflicting content lives in separate articles, note it in both and cross-link them.
 
 See `references/article-template.md` for article format. Key points:
+
 - Sources field: author, organization, or publication name + date, semicolon-separated.
 - Raw field: markdown links to raw/ files, semicolon-separated.
 - Relative paths from `wiki/<topic>/` use `../../raw/<topic>/<file>.md` (two levels up to project root).
@@ -101,6 +107,7 @@ Omit `- Updated:` lines when no cascade updates occur.
 ## Query
 
 Search the wiki and answer questions. Examples of triggers:
+
 - "What do I know about X?"
 - "Summarize everything related to Y"
 - "Compare A and B based on my wiki"
@@ -139,20 +146,24 @@ Quality checks on the wiki. Two categories with different authority levels.
 Fix these automatically:
 
 **Index consistency** — compare `wiki/index.md` against actual wiki/ files (excluding index.md and log.md):
+
 - File exists but missing from index → add entry with `(no summary)` placeholder. For Updated, use the article's metadata Updated date if present; otherwise fall back to file's last modified date.
 - Index entry points to nonexistent file → mark as `[MISSING]` in the index. Do not delete the entry; let the user decide.
 
 **Internal links** — for every markdown link in wiki/ article files (body text and Sources metadata), excluding Raw field links (validated by Raw references below) and excluding index.md/log.md (handled above):
+
 - Target does not exist → search wiki/ for a file with the same name elsewhere.
   - Exactly one match → fix the path.
   - Zero or multiple matches → report to the user.
 
-**Raw references** — every link in a Raw field must point to an existing raw/ file:
-- Target does not exist → search raw/ for a file with the same name elsewhere.
+**Raw references** — every link in a Raw or Clippings field must point to an existing `raw/` or `clippings/`:
+
+- Target does not exist → search both `raw/` and `clippings/` directories for a file with the same name elsewhere.
   - Exactly one match → fix the path.
   - Zero or multiple matches → report to the user.
 
 **See Also** — within each topic directory:
+
 - Add obviously missing cross-references between related articles.
 - Remove links to deleted files.
 
