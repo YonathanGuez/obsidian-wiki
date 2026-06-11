@@ -29,6 +29,30 @@ Three layers, all under the user's project root:
 
 Templates live in `references/` relative to this file. Read them when you need the exact format for raw files, articles, archive pages, or the index.
 
+### Configuration
+
+On first use, the skill checks for a configuration file at `~/.obsidian-wiki-config.json`. If it doesn't exist, prompt the user:
+
+```
+"What is the path to your Obsidian vault?"
+```
+
+Save the response to `~/.obsidian-wiki-config.json`:
+
+```json
+{
+  "vaultPath": "/path/to/your/obsidian/vault"
+}
+```
+
+On every subsequent call, read this config file and use the stored vault path. If the config file exists but the vault path is invalid or inaccessible, prompt the user to update it:
+
+```
+"The vault path in your config is invalid. Please provide the correct path to your Obsidian vault."
+```
+
+Users can manually edit `~/.obsidian-wiki-config.json` to change the vault path at any time.
+
 ### Initialization
 
 Triggers only on the first Ingest. Check whether `raw/` `Clippings/` and `wiki/` exist. Create only what is missing; never overwrite existing files:

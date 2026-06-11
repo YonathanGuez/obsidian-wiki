@@ -49,9 +49,49 @@ See [examples/](examples/) for sample wiki pages, source files, and operation lo
 
 Before installing this skill, ensure you have the following:
 
-- **Web Clipper**: Install the [Obsidian Web Clipper](https://obsidian.md/clipper) to save articles directly to your `Clippings/` folder
+- **Web Clipper**: Install the [Obsidian Web Clipper](https://obsidian.md/clipper) to save articles directly to your `clippings/` folder
 - **Obsidian**: Download and install [Obsidian](https://obsidian.md) for free to manage your knowledge base
 - **Optional - MCP Obsidian**: For advanced integration, you can optionally install [MCP Obsidian](https://github.com/MarkusPfundstein/mcp-obsidian)
+
+## Configuration
+
+### Setting Your Vault Folder (One-Time Setup)
+
+The skill uses a configuration file to remember your Obsidian vault location. You only need to configure this once.
+
+**First Time Setup:**
+
+When you use the skill for the first time, it will ask you:
+
+```
+"What is the path to your Obsidian vault?"
+```
+
+Provide the path to your Obsidian vault (e.g., `/Users/yourname/Documents/MyVault` or `~/Obsidian/MyVault`), and the skill will:
+
+1. Save your vault path to `~/.obsidian-wiki-config.json`
+2. Create the required directories (`raw/`, `clippings/`, `wiki/`) inside your vault
+3. Initialize `wiki/index.md` and `wiki/log.md`
+
+**Subsequent Uses:**
+
+Every time you call the skill afterward, it will automatically use the vault path from your configuration file. No need to reconfigure!
+
+**Changing Your Vault:**
+
+If you want to switch to a different vault, you can:
+
+1. Edit `~/.obsidian-wiki-config.json` directly:
+
+   ```json
+   {
+     "vaultPath": "/path/to/new/vault"
+   }
+   ```
+
+2. Or simply call the skill and it will prompt you to update the path if the current one is invalid.
+
+See [SKILL.md](SKILL.md) for full configuration details.
 
 ## Install
 
