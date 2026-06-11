@@ -1,10 +1,10 @@
-# obsidian-wiki
+# karpathy-llm-wiki-webclipper
 
-**A reusable skill for building and maintaining personal knowledge bases in Obsidian with LLM-powered compilation. Ingest sources, compile them into wiki articles, and keep your knowledge base organized and cross-linked.**
+**A reusable skill for building Karpathy-style LLM wikis with Claude Code, Cursor, Codex, and other Agent Skills tools. Enhanced with web clipper integration for seamless content ingestion.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Agent Skills](https://img.shields.io/badge/Agent_Skills-compatible-blue)](https://agentskills.io)
-[![Install](https://img.shields.io/badge/Install-npx_add--skill-green)](https://github.com/YonathanGuez/obsidian-wiki#install)
+[![Install](https://img.shields.io/badge/Install-npx_add--skill-green)](https://github.com/YonathanGuez/karpathy-llm-wiki-webclipper#install)
 
 <p align="center">
   <img src="assets/karpathy-tweet.png" alt="Karpathy's tweet about LLM Wiki" width="560">
@@ -56,7 +56,7 @@ Before installing this skill, ensure you have the following:
 ## Install
 
 ```bash
-npx add-skill YonathanGuez/obsidian-wiki
+npx add-skill YonathanGuez/karpathy-llm-wiki-webclipper
 ```
 
 Works with any tool that supports the [Agent Skills](https://agentskills.io) standard.
@@ -112,10 +112,10 @@ This skill follows the [agentskills.io](https://agentskills.io) open standard:
 
 | Tool        | Install method                                                    |
 | ----------- | ----------------------------------------------------------------- |
-| Claude Code | `npx add-skill YonathanGuez/obsidian-wiki`                        |
-| Cursor      | `npx add-skill YonathanGuez/obsidian-wiki`                        |
-| Codex CLI   | Copy to `.agents/skills/obsidian-wiki/`                           |
-| OpenCode    | `npx add-skill YonathanGuez/obsidian-wiki`                        |
+| Claude Code | `npx add-skill YonathanGuez/karpathy-llm-wiki-webclipper`         |
+| Cursor      | `npx add-skill YonathanGuez/karpathy-llm-wiki-webclipper`         |
+| Codex CLI   | Copy to `.agents/skills/karpathy-llm-wiki-webclipper/`            |
+| OpenCode    | `npx add-skill YonathanGuez/karpathy-llm-wiki-webclipper`         |
 | Other tools | Copy `SKILL.md` and `references/` into the tool's skill directory |
 
 ## FAQ

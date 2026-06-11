@@ -1,6 +1,6 @@
 ---
-name: obsidian-wiki
-description: "Use when building or maintaining a personal knowledge base in Obsidian with LLM-powered compilation. Triggers: ingesting sources into a wiki, querying wiki knowledge, linting wiki quality, 'add to wiki', 'what do I know about', or any mention of 'wiki' or 'Obsidian'."
+name: karpathy-llm-wiki
+description: "Use when building or maintaining a personal LLM-powered knowledge base. Triggers: ingesting sources into a wiki, querying wiki knowledge, linting wiki quality, 'add to wiki', 'what do I know about', or any mention of 'LLM wiki' or 'Karpathy wiki'."
 ---
 
 # Karpathy LLM Wiki

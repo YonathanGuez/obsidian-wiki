@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "karpathy-llm-wiki": {
+      "source": "YonathanGuez/karpathy-llm-wiki-webclipper",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "57a443540af481911939ea2348edb9a3a33b23ecf22b3ee75a4f88df1dc47156"
+    }
+  }
+}
