@@ -56,7 +56,7 @@ Before installing this skill, ensure you have the following:
 ## Install
 
 ```bash
-npx add-skill YonathanGuez/obsidian-wiki
+npx skills add YonathanGuez/obsidian-wiki
 ```
 
 Works with any tool that supports the [Agent Skills](https://agentskills.io) standard.
